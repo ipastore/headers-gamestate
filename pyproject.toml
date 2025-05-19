@@ -16,7 +16,7 @@ dependencies = [
     "openmim==0.3.9",
     "torchreid @ git+https://github.com/VlSomers/bpbreid",
     "lightning==2.0.9",
-    "tracklab_calibration",
+    # "tracklab_calibration",     ERROR: No matching distribution found for tracklab_calibration
     "numpy<2.0",
 ]
 
