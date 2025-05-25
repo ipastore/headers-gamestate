@@ -62,12 +62,12 @@ modules: # Allows module-specific batch_size and other configuration
 # Flags
 test_tracking: True
 eval_tracking: True
-print_config: False
+print_config: True
 
 # Dataset
 dataset:
-  nvid: 1  # For a quick first inference, only the first video is processed. Use "-1" to process all the videos.
-#  nframes: -1 # For testing on only a few frames, set to a positive number. Will disable evaluation !
+  nvid: 5  # For a quick first inference, only the first video is processed. Use "-1" to process all the videos.
+  # nframes: 30 # For testing on only a few frames, set to a positive number. Will disable evaluation !
   eval_set: "valid"  # Tracking is performed on the SoccerNet validation set. Choose from {"train", "valid", "test", "challenge"}.
   dataset_path: ${data_dir}/SoccerNetGS  # The SoccerNet game state dataset is located under the data path (defined above) in the 'SoccerNetGS' folder
   vids_dict: # Use one key per split (valid, test, etc)
@@ -77,6 +77,7 @@ dataset:
 # Dump tracking results to a .pcklz file to save computation time on the next run. Have a look at TrackLab tutorials for more details.
 state:
   save_file: "states/${experiment_name}.pklz"  # 'null' to disable saving. This is the save path for the tracker_state object that contains all modules outputs (bboxes, reid embeddings, jersey numbers, roles, teams, etc)
+  # load_file: "/home/student/headers-tracking/headers-gamestate/outputs/sn-gamestate/2025-05-22/11-28-29/states/sn-gamestate.pklz"  
   load_file: null  # 'null' to disable loading. Load a file that was saved with the 'state.save_file' option above. Don't forget to remove from the pipeline all modules that should not be run again, but loaded from the saved tracker state.
 
 # Visualization

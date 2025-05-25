@@ -176,7 +176,8 @@ class NBJW_Calib(ImageLevelModule):
         return image
 
     def process(self, batch: Any, detections: pd.DataFrame, metadatas: pd.DataFrame):
-        predictions = metadatas["keypoints"][0]
+        
+        predictions = metadatas.iloc[0]["keypoints"]
 
         self.cam.update(predictions)
         h = self.cam.get_homography_from_ground_plane(use_ransac=50, inverse=True)
